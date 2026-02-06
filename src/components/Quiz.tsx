@@ -139,6 +139,7 @@ export function Quiz() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [answers, setAnswers] = useState<Record<number, string>>({})
     const [userName, setUserName] = useState("")
+    const [quizStarted, setQuizStarted] = useState(false)
     const [showResult, setShowResult] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -243,7 +244,7 @@ export function Quiz() {
         )
     }
 
-    if (!userName) {
+    if (!quizStarted) {
         return (
             <Card className="shadow-lg border-t-4 border-t-primary">
                 <CardHeader>
@@ -263,7 +264,7 @@ export function Quiz() {
                     </div>
                 </CardContent>
                 <CardFooter className="pt-6">
-                    <Button className="w-full h-12 text-lg shadow-md hover:shadow-lg transition-transform active:scale-[0.98]" disabled={!userName.trim()} onClick={() => setUserName(userName.trim())}>
+                    <Button className="w-full h-12 text-lg shadow-md hover:shadow-lg transition-transform active:scale-[0.98]" disabled={!userName.trim()} onClick={() => setQuizStarted(true)}>
                         Comenzar Test
                     </Button>
                 </CardFooter>
